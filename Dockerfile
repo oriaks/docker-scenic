@@ -81,4 +81,4 @@ ENV PULSE_SERVER /run/pulse/native
 ENV NODE_PATH $NODE_PATH:/usr/local/lib/nodejs:/usr/lib/nodejs
 WORKDIR /opt/scenic2
 
-ENTRYPOINT ["node","server/src/server.js","-nl","switcher"]
+ENTRYPOINT ["node","build/server.js","-nl","switcher"]
