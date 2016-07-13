@@ -15,6 +15,7 @@ $ docker run -d \
   -p "0.0.0.0:5060:5060/tcp" \
   -p "0.0.0.0:5060:5060/udp" \
   -p "0.0.0.0:8000:8000/tcp" \
+  -p "0.0.0.0:8080:8080/tcp" \
   -p "0.0.0.0:9000:9000/tcp" \
   -v "/dev/video0:/dev/video0:rw" \
   -v "/run/user/$(id -u)/pulse:/run/pulse:ro" \

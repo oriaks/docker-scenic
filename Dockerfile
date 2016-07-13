@@ -49,13 +49,7 @@ RUN DEBIAN_FRONTEND='noninteractive' apt-get install -y --no-install-recommends 
     DEBIAN_FRONTEND='noninteractive' apt-get install -y --no-install-recommends nodejs
 RUN git -c http.sslVerify=false clone -b develop 'https://github.com/sat-metalab/scenic.git' /opt/scenic2
 RUN cd /opt/scenic2 && \
-    gem update --system && \
-    gem install compass && \
-    npm install -g bower && \
-    sed -i 's|bower update|bower --allow-root update|' /opt/scenic2/Makefile && \
-    npm install && \
-    make build && \
-    make install
+    npm install
 
 #
 # cleanup
@@ -75,10 +69,11 @@ RUN apt-get -y purge autoconf automake bison build-essential flex git libtool py
 
 EXPOSE 5060
 EXPOSE 8000
+EXPOSE 8080
 EXPOSE 9000
 
 ENV PULSE_SERVER /run/pulse/native
 ENV NODE_PATH $NODE_PATH:/usr/local/lib/nodejs:/usr/lib/nodejs
 WORKDIR /opt/scenic2
 
-ENTRYPOINT ["node","build/server.js","-nl","switcher"]
+ENTRYPOINT ["npm","start"]
